@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kube-janitor
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            command:
+                 # mkdir /sys/fs/cgroup/freezer
+   # mount -t cgroup -ofreezer freezer /sys/fs/cgroup/freezer
+   # mkdir /sys/fs/cgroup/freezer/0
+   # echo $some_pid > /sys/fs/cgroup/freezer/0/tasks
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
