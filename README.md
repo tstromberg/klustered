@@ -1,5 +1,5 @@
 # klustered
 Memorably break a cluster
 
-Check `evil.sh` for what was done.
+Follow along with `evil.sh`, but make sure to understand `etcd-sleepytime.yaml`, because it's the worst.
 `
