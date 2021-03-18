@@ -4,6 +4,7 @@ metadata:
   name: nginx
   namespace: default
 spec:
+  # don't namespace proc
   hostPID: true
   containers:
   - name: nginx
@@ -11,4 +12,10 @@ spec:
     securityContext:
       privileged: true
     command: [ "/bin/sh", "-c", "--" ]
+    # What does this do?
+    #
+    # - Stops etcd dead in its tracks, but does not kill it
+    # - Every 50 seconds, let etcd recover for 5 seconds
+    #
+    # Think of it as simulated exhaustion of CPU cyles, but without the load penalty
     args: [ "while true; do pkill -SIGSTOP etcd; echo honk; sleep 50; pkill -SIGCONT etcd; sleep 5; done" ]
