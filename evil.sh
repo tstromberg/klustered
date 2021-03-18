@@ -1,10 +1,10 @@
 #!/bin/sh
 # Break a cluster in a way that requires the following debugging skills:
 #
+# * Knowledge of DNS
 # * Knowledge of taints (noexecute)
 # * Knowledge of eviction reasons (inodes)
-# * Knowledge of CoreDNS
-# * Knowledge of kill signals or process SIGSTOP/SIGCONT
+# * Knowledge of processes/signals SIGSTOP/SIGCONT
 
 kubectl get po -A --watch &
 
